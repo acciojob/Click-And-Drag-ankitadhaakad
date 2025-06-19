@@ -1,32 +1,29 @@
-// Your code here.
-<script>
-  const slider = document.querySelector('.items');
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+const slider = document.querySelector('.items');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
+slider.addEventListener('mousedown', function (e) {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
 
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
+slider.addEventListener('mouseleave', function () {
+  isDown = false;
+  slider.classList.remove('active');
+});
 
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
+slider.addEventListener('mouseup', function () {
+  isDown = false;
+  slider.classList.remove('active');
+});
 
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // scroll-fast multiplier
-    slider.scrollLeft = scrollLeft - walk;
-  });
-</script>
+slider.addEventListener('mousemove', function (e) {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.5; // Adjust scroll speed if needed
+  slider.scrollLeft = scrollLeft - walk;
+});
